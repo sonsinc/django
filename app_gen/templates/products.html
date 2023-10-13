@@ -1,0 +1,63 @@
+{% extends "base.html" %}
+{% load humanize %}
+
+{% block title %} All product {% endblock %}
+
+{% block content %}
+    <!-- เนื้อหา (Content) -->
+    <section class="content2 cid-tsEQSCqggh bg-dark" id="content2-2">
+        <div class="container">
+            <div class="mbr-section-head">
+                <h4 class="mbr-section-title mbr-fonts-style align-center mb-0 display-5 text-uppercase text-warning">
+                    <strong>Our Product</strong>
+                </h4>
+            </div>
+            <div class="row mt-4">
+                {% for product in all_products %} 
+                <div class="item features-image сol-12 col-md-6 col-lg-4">
+                    <div class="item-wrapper bg-dark bg-gradient">
+                        <div class="item-img">
+                            <a href="{% url 'productDetail' product.id %}">
+                                <img src="{{product.image.url}}">
+                            </a>
+                        </div>
+                        <div class="item-content">
+                            <h6 class="item-subtitle mbr-fonts-style mt-1 display-7 text-white">
+                                <strong> {{product.name}} </strong>
+                            </h6>
+                            <p class="mbr-text mbr-fonts-style mt-3 display-7 text-white">฿ {{product.price | intcomma}}</p>
+                        </div>
+                        <div class="mbr-section-btn item-footer mt-2 text-white">
+                            
+                            {% if product.stock <= 0 %}
+                                <h2 class ="text-center"> Out of stock</h2>   
+                            {% else %}
+                            <div class="d-flex justify-content-end">
+                                <a href="{% url 'addCart' product.id %}" class="btn btn-dark border-secondary display-4">
+                                    <i class="bi bi-cart3 text-warning"></i>&nbsp;ORDER
+                                </a>
+                            </div>
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+
+            <!-- หมายเลขหน้า -->
+            <nav aria-label="product-pagination" class="media-container-row">
+                <ul class="pagination pagination-lg">
+                    {% for num in all_products.paginator.page_range  %}
+                        {% if num != all_products.number  %}
+                            <li class="page-item "><a class="page-link" href="?page={{num}}"> {{num}} </a></li>
+                        {% else %}
+                            <li class="page-item active"><a class="page-link" href="?page={{num}}"> {{num}} </a></li>
+                        {% endif %}
+                    {% endfor %}
+                </ul>
+            </nav>
+            br
+        </div>
+    </section>
+{% endblock  %}
+    

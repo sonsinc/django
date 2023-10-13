@@ -1,0 +1,20 @@
+.contact-box {
+    display: inline-block;
+    background-color: black;
+    color: orange;
+    width: 33%; 
+    height: 535px;
+    padding: 50px;
+    border-radius: 5px;
+    text-align: center;
+}
+.box-content {
+    background-color: rgb(66, 64, 64);
+    height: 200px;
+    border-radius: 5px;
+    font-size: 2rem;
+}
+
+.icon {
+    font-size: 100px; /* Increased icon size to 36px */
+}

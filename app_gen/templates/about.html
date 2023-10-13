@@ -1,0 +1,34 @@
+{% extends "base.html" %}
+{% load humanize %}
+{% load static  %}
+
+{% block title %} About {% endblock %}
+
+{% block content %}
+    <!-- about us -->
+    <div class="about us ">
+        <div class="cont2">
+            <h3>About Us</h3>
+            <h1>who we are</h1>
+        </div>
+        <div class="about-content">
+            <div class="about-image">
+                <img src="{% static 'assets/image/about.jpg' %}" alt="about">
+            </div>
+            <div class="about-text">
+                <h1>Hello,</h1>
+                <p> Welcome to our cafe, where every cup <br>
+                    is a journey to the world of rich aromas<br>  
+                    and bold flavors. Our passion for crafting <br> 
+                    the perfect blend meets  a cozy and inviting<br> 
+                    atmosphere, making us your ultimate <br> 
+                    destination for a delightful coffee experience.<br> 
+                    Join us in exploring the art of coffee in a space<br>  
+                    designed for comfort and community.</p>
+            </div>
+        </div>
+    </div>
+
+
+{% endblock  %}
+    

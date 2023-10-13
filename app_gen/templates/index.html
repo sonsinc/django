@@ -1,0 +1,64 @@
+{% extends "base.html" %}
+{% load humanize %}
+
+{% block title %} Home {% endblock %}
+
+{% block content %}
+    <!-- welcome -->
+    <header class="header-content">
+        <h3>no coffee, no work</h3>
+        <h1><span style="color:red">start </span>your day<br>with a <span style="color: orange">coffee </span> </h1>
+        <a href="/products">
+            <button>ORDER NOW</button>
+        </a> 
+    </header>
+
+    <!-- popular product -->
+        <section class="content2 cid-tsEQSCqggh bg-dark" id="content2-2">
+        <div class="container">
+            <div class="mbr-section-head">
+                <h4 class="mbr-section-title mbr-fonts-style align-center mb-0 display-4 text-uppercase text-warning">
+                    <strong>Our Product</strong>
+                </h4>
+                <h4 class="mbr-section-title mbr-fonts-style align-center mb-0 display-5 text-uppercase text-white">
+                    <strong>Popular Product</strong>
+                </h4>
+            </div>
+            <div class="row mt-4">
+                {% for product in products  %} 
+                <div class="item features-image сol-12 col-md-6 col-lg-4 ">
+                    <div class="item-wrapper bg-dark bg-gradient ">
+                        <div class="item-img" >
+                            <a href="{% url 'productDetail' product.id %}">
+                                <img src="{{product.image.url}}">
+                            </a>
+                        </div>
+                        <div class="item-content">
+                            <h6 class="item-subtitle mbr-fonts-style mt-1 display-7 text-white">
+                                <strong> {{product.name}} </strong>
+                            </h6>
+                            <p class="mbr-text mbr-fonts-style mt-3 display-7  text-white">฿ {{product.price | intcomma}}</p>
+                        </div>
+                        <div class="mbr-section-btn item-footer mt-2 text-white ">
+                            {% if product.stock <= 0 %}
+                                <h2 class ="text-center"> Out of stock</h2>   
+                            {% else %}
+                            <div class="d-flex justify-content-end">
+                                <a href="{% url 'addCart' product.id %}" class="btn btn-dark border-secondary display-4">
+                                    <i class="bi bi-cart3 text-warning"></i>&nbsp;ORDER
+                                </a>
+                            </div>
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </section>
+
+    
+
+
+{% endblock  %}
+    
